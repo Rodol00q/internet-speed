@@ -1,0 +1,203 @@
+<html><head><base href="https://fast.com/%20puedes%20hacer%20que%20tenga%20igual%20un%20efe%20yo%20matriz%20verde%20detr%C3%A1s%20del%20fondo?%20Y%20ahora%20en%20el%20derecho%20autor%20que%20dice%202023%20poner%202024%20y%20Que%20diga%20mi%20n%C3%BAmero%20+5356639178%20y%20agrega%20agrega%20Redes%20sociles%20y%20agrega%20este%20link%20heylink.me/Rodol_official/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RodolfoSpeed - Test de Velocidad de Internet con Efecto Matriz</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+#speed-test-container {
+    text-align: center;
+    background-color: rgba(42, 42, 42, 0.8);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+#logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #00ff00;
+    margin-bottom: 20px;
+}
+
+#speed-value {
+    font-size: 80px;
+    font-weight: bold;
+    color: #00ff00;
+    margin: 20px 0;
+}
+
+#unit {
+    font-size: 24px;
+    color: #00cc00;
+}
+
+#status {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #00cc00;
+}
+
+#start-button {
+    background-color: #00ff00;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    background-color: #00cc00;
+}
+
+#copyright {
+    font-size: 12px;
+    color: #888;
+    margin-top: 20px;
+}
+
+#social-media {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #00ff00;
+}
+
+#social-media a {
+    color: #00ff00;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#social-media a:hover {
+    color: #00cc00;
+}
+
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+</style>
+</head>
+<body>
+<canvas id="matrix-bg"></canvas>
+<div id="speed-test-container">
+    <div id="logo">RodolfoSpeed</div>
+    <div id="speed-value">0</div>
+    <div id="unit">Mbps</div>
+    <div id="status">Presiona el botón para iniciar la prueba</div>
+    <button id="start-button">Iniciar Prueba</button>
+    <div id="social-media">
+        Redes sociales: <a href="https://heylink.me/Rodol_official/" target="_blank">heylink.me/Rodol_official/</a>
+    </div>
+    <div id="copyright">© 2024 RodolfoSpeed. Todos los derechos reservados. Contacto: +5356639178</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+const speedValue = document.getElementById('speed-value');
+const status = document.getElementById('status');
+const startButton = document.getElementById('start-button');
+
+async function measureSpeed() {
+    const startTime = Date.now();
+    const fileSize = 5 * 1024 * 1024; // 5MB
+    const url = `https://speed.cloudflare.com/__down?bytes=${fileSize}`;
+
+    try {
+        status.textContent = 'Midiendo velocidad...';
+        startButton.disabled = true;
+        
+        const response = await axios.get(url, {
+            responseType: 'arraybuffer',
+            onDownloadProgress: progressEvent => {
+                const elapsed = (Date.now() - startTime) / 1000;
+                const loaded = progressEvent.loaded;
+                const bps = (loaded * 8) / elapsed;
+                const mbps = (bps / 1000000).toFixed(2);
+                speedValue.textContent = mbps;
+            }
+        });
+
+        const endTime = Date.now();
+        const duration = (endTime - startTime) / 1000;
+        const finalSpeed = ((fileSize * 8) / duration / 1000000).toFixed(2);
+        speedValue.textContent = finalSpeed;
+        status.textContent = '¡Prueba completada!';
+    } catch (error) {
+        console.error('Error durante la prueba de velocidad:', error);
+        status.textContent = 'Ocurrió un error. Por favor, intenta de nuevo.';
+    } finally {
+        startButton.disabled = false;
+    }
+}
+
+startButton.addEventListener('click', measureSpeed);
+
+// Matrix effect
+const canvas = document.getElementById('matrix-bg');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const nums = '0123456789';
+
+const alphabet = katakana + latin + nums;
+
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const rainDrops = [];
+
+for (let x = 0; x < columns; x++) {
+    rainDrops[x] = 1;
+}
+
+function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#0F0';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+    }
+}
+
+setInterval(draw, 30);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+</body></html>
